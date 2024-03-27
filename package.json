@@ -25,7 +25,12 @@
     "packages/*"
   ],
   "dependencies": {
+    "@prisma/client": "latest",
     "@prisma/extension-accelerate": "latest",
+    "@types/bcrypt": "^5.0.2",
+    "bcrypt": "latest",
+    "i": "^0.3.7",
+    "next-auth": "latest",
     "recoil": "latest"
   }
 }
