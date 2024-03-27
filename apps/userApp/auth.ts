@@ -47,7 +47,7 @@ export const authOptions = {
         try {
           const user = await db.user.create({
             data: {
-              number: credentials.phone,
+              number: credentials.number,
               password: hash,
             },
           });
