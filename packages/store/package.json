@@ -1,0 +1,14 @@
+{
+  "name": "@repo/store",
+  "module": "index.ts",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "exports": {
+    "./useBalance": "./hooks/useBalance"
+  }
+}
