@@ -9,6 +9,7 @@
     "typescript": "^5.0.0"
   },
   "exports": {
-    "./useBalance": "./hooks/useBalance"
+    "./useBalance": "./hooks/useBalance",
+    "./balance": "./atoms/balance.ts"
   }
 }
