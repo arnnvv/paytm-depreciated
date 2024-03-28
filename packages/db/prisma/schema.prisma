@@ -18,17 +18,44 @@ enum AuthType {
   Github
 }
 
+enum OnRampStatus {
+  Success
+  Failure
+  Processing
+}
+
 model User {
-  id        String   @id @default(uuid())
-  name      String?
-  email     String?  @unique
-  number    String   @unique
-  password  String
+  id                 String          @id @default(uuid())
+  name               String?
+  email              String?         @unique
+  number             String          @unique
+  password           String
+  OnRampTransaction  OnRampTransaction[]
+  Balances           Balance[]
 }
 
 model Merchant {
-  id        String   @id @default(uuid())
-  email     String?  @unique
-  name      String?
-  auth_type AuthType
+  id                 String          @id @default(uuid())
+  email              String?         @unique
+  name               String?
+  auth_type          AuthType
+}
+
+model OnRampTransaction {
+  id                 String          @id @default(uuid())
+  status             OnRampStatus
+  token              String          @unique
+  provider           String
+  amount             Int
+  startTime          DateTime
+  userId             String
+  user               User            @relation(fields: [userId], references: [id])
+}
+
+model Balance {
+  id                 String          @id @default(uuid())
+  userId             String          @unique
+  amount             Int
+  locked             Int
+  user               User            @relation(fields: [userId], references: [id])
 }
