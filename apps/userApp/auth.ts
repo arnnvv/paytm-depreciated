@@ -3,7 +3,7 @@ import CredentialsProvider from "next-auth/providers/credentials";
 import GoogleProvider from "next-auth/providers/google";
 import GitHubProvider from "next-auth/providers/github";
 import bcrypt from "bcrypt";
-import { validate } from "./validate";
+import { validate } from "@repo/validate/client";
 
 export const authOptions = {
   providers: [
