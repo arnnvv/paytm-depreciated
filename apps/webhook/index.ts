@@ -45,3 +45,5 @@ app.post("/hdfcWebhook", async (req: Request, res: Response) => {
     await db.$disconnect();
   }
 });
+
+app.listen(3003);
