@@ -15,5 +15,8 @@
   },
   "exports": {
     "./client": "./index.ts"
+  },
+  "prisma": {
+    "seed": "bun prisma/seed.ts"
   }
 }
