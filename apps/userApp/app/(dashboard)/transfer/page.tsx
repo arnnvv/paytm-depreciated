@@ -13,8 +13,8 @@ const getBalance = async () => {
     },
   });
   return {
-    balance: balance?.amount,
-    locked: balance?.locked,
+    amount: balance?.amount || 0,
+    locked: balance?.locked || 0,
   };
 };
 
@@ -46,7 +46,7 @@ export default async function Transfer(): Promise<JSX.Element> {
           <AddMoney />
         </div>
         <div>
-          <BalanceCard amount={balance.amount} locked={balance.locked} />
+          <BalanceCard amount={balance?.amount} locked={balance?.locked} />
           <div className="pt-4">
             <OnRampTransactions transactions={transactions} />
           </div>
