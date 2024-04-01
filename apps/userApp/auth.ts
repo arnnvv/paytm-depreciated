@@ -51,6 +51,15 @@ export const authOptions = {
             data: {
               number: credentials.number,
               password: hash,
+              Balances: {
+                create: {
+                  amount: 0,
+                  locked: 0,
+                },
+              },
+            },
+            include: {
+              Balances: true,
             },
           });
 
