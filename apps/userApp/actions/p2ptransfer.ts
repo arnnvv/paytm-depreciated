@@ -18,6 +18,7 @@ export const p2pTransfer = async (to: string, amount: number) => {
   if (!toExist) throw new Error("User does not exist");
 
   await db.$transaction(async (tx) => {
+    await tx.$queryRaw`SELECT * FROM "Balance" WHERE "userId" = ${Number(from)} FOR UPDATE`;
     const fromBalance = await tx.balance.findFirst({
       where: {
         userId: from,
@@ -43,6 +44,14 @@ export const p2pTransfer = async (to: string, amount: number) => {
         amount: {
           increment: amount,
         },
+      },
+    });
+    await tx.p2pTransfer.create({
+      data: {
+        fromUserId: from,
+        toUserId: toExist.id,
+        amount,
+        timestamp: new Date(),
       },
     });
   });
