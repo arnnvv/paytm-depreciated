@@ -12,3 +12,5 @@ export const GET = async () => {
     return NextResponse.json({ error: "Unauthorized" }, { status: 500 });
   }
 };
+
+export const dynamic = "force-dynamic";

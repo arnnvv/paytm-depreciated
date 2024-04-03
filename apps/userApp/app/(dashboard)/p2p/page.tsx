@@ -14,7 +14,7 @@ const getP2pTransactions = async () => {
       toUser: true,
     },
   });
-  return transactions.map((transaction) => ({
+  return transactions.map((transaction: any) => ({
     amount: transaction.amount,
     sentTo: transaction.toUser.number,
     time: transaction.timestamp,
