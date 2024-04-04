@@ -8,7 +8,15 @@ COPY apps ./apps
 COPY packages ./packages
 
 RUN bun install
-RUN cd packages/db && bunx prisma generate --no-engine && cd ../..
+
+WORKDIR /usr/src/app/packages/db
+RUN bunx prisma generate --no-engine
+
+WORKDIR /usr/src/app
 
 RUN bun run build
-CMD ["cd", "./apps/bankApp/", "&&", "bun", "run", "start"]
+
+WORKDIR /usr/src/app/apps/bankApp/
+
+CMD ["bun", "run", "start"]
+
