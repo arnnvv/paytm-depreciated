@@ -26,5 +26,15 @@ jobs:
           push: true
           tags: arnnvv/user-app:latest
 
-      - name: Verify Pushed Image
-        run: docker pull arnnvv/user-app:latest
+      - name: Build and Push Docker image for bank
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./docker/Dockerfile.bank
+          push: true
+          tags: arnnvv/bank-app:latest
+
+      - name: Verify Pushed Images
+        run: |
+          docker pull arnnvv/user-app:latest
+          docker pull arnnvv/bank-app:latest
